@@ -50,7 +50,7 @@ This project investigates bias in hiring decisions using Logistic Regression and
   - **XGBoost:** High PersonalityScore drives Hire decisions.
 - **Visualizations:**
   - **Fairness Metrics Plot:** Visualizes Demographic Parity and Equal Opportunity for both models.
-    ![Fairness Metrics Plot](images/fairness_metrics_plot.png)
+    ![Fairness Metrics Plot](file:///C:/Users/dell/OneDrive/Documents/AI%20Bias%20Detection/results/logistic_fairness_plot.png)
   - **SHAP Explainability Plot:** Shows SHAP values for feature contributions in Hire/No-Hire predictions.
     ![SHAP Explainability Plot](images/shap_explainability_plot.png)
 
