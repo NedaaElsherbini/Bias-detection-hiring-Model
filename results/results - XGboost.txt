@@ -1,0 +1,25 @@
+XGBoost (Pretrained) Results:
+Accuracy: 0.92
+Precision: 0.91
+Recall: 0.83
+Fairness Metrics:
+        demographic_parity  equal_opportunity  false_positive_rate
+Gender                                                            
+Female            0.286652           0.818792             0.029221
+Male              0.317568           0.869565             0.068627
+Average Odds Difference: 0.05
+Explanations:
+Prediction 0: Hire (Gender: Male)
+SHAP Values: {'Age': np.float32(-0.33970955), 'EducationLevel': np.float32(3.2031255), 'ExperienceYears': np.float32(1.0556), 'PreviousCompanies': np.float32(-0.17214967), 'DistanceFromCompany': np.float32(0.36794233), 'InterviewScore': np.float32(-1.6809745), 'SkillScore': np.float32(2.1335597), 'PersonalityScore': np.float32(3.7816098), 'RecruitmentStrategy': np.float32(-2.3182688)}
+Prediction 9: Hire (Gender: Male)
+SHAP Values: {'Age': np.float32(0.9951237), 'EducationLevel': np.float32(-0.45740002), 'ExperienceYears': np.float32(1.5562713), 'PreviousCompanies': np.float32(0.33712727), 'DistanceFromCompany': np.float32(-0.5660664), 'InterviewScore': np.float32(-0.7286188), 'SkillScore': np.float32(-0.94688326), 'PersonalityScore': np.float32(1.5123029), 'RecruitmentStrategy': np.float32(3.775593)}
+Prediction 11: Hire (Gender: Female)
+SHAP Values: {'Age': np.float32(-0.12040992), 'EducationLevel': np.float32(2.7459724), 'ExperienceYears': np.float32(1.0156531), 'PreviousCompanies': np.float32(0.1485835), 'DistanceFromCompany': np.float32(-0.09012768), 'InterviewScore': np.float32(-1.9731624), 'SkillScore': np.float32(2.414067), 'PersonalityScore': np.float32(1.4699887), 'RecruitmentStrategy': np.float32(-2.5295987)}
+Prediction 1: No-Hire (Gender: Female)
+SHAP Values: {'Age': np.float32(0.8904359), 'EducationLevel': np.float32(-0.5407234), 'ExperienceYears': np.float32(-0.5015556), 'PreviousCompanies': np.float32(-0.39051104), 'DistanceFromCompany': np.float32(0.14698493), 'InterviewScore': np.float32(-0.24514042), 'SkillScore': np.float32(0.40025112), 'PersonalityScore': np.float32(-0.71668077), 'RecruitmentStrategy': np.float32(-1.8595316)}
+Prediction 2: No-Hire (Gender: Female)
+SHAP Values: {'Age': np.float32(-0.7579042), 'EducationLevel': np.float32(-1.5865897), 'ExperienceYears': np.float32(0.28307286), 'PreviousCompanies': np.float32(-0.22887379), 'DistanceFromCompany': np.float32(-0.26591158), 'InterviewScore': np.float32(-1.628483), 'SkillScore': np.float32(-0.2367902), 'PersonalityScore': np.float32(0.73830503), 'RecruitmentStrategy': np.float32(-2.5179443)}
+Baseline Accuracy: 0.93
+Mitigated Accuracy: 0.93
+Baseline AOD: 0.03
+Mitigated AOD: 0.03
