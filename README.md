@@ -71,9 +71,9 @@ This project evaluates bias in job screening models using logistic regression an
   - **XGBoost:** High PersonalityScore drives Hire decisions.
 - **Visualizations:**
   - **Fairness Metrics Plot:** Visualizes Demographic Parity and Equal Opportunity for both models.
-    ![Fairness Metrics Plot](<img width="640" height="480" alt="Image" src="https://github.com/user-attachments/assets/5dea5c82-c681-4547-a19e-41405b2e0561" />)
-  - **SHAP Explainability Plot:** Shows SHAP values for feature contributions in Hire/No-Hire predictions.
-    ![SHAP Explainability Plot](images/shap_explainability_plot.png)
+    ![logistic Fairness Plots](images/logistic_fairness_plot.png)
+    ![XGBoost Fairness Plot](images/xgb_fairness_plot.png)
+    
 
 ## Improvements
 - Rebalance the dataset (e.g., oversample female resumes) to reduce bias.
