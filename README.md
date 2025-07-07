@@ -1,48 +1,67 @@
-# Job Screening Model Bias Analysis Project
+# Job Screening Model Bias Project
 
 This project focuses on analyzing bias and explaining decisions in job screening models, comparing Logistic Regression and XGBoost. The goal is to evaluate fairness metrics and interpret model predictions using SHAP values, with a focus on gender as the sensitive attribute.
 
----
 
 ## Table of Contents
-
-- [Project Overview](#project-overview)
-- [Dataset](#dataset)
-- [Project Structure](#project-structure)
-- [Installation & Setup](#installation--setup)
+- [Overview](#overview)
+- [Installation](#installation)
 - [Usage](#usage)
-- [Modeling Approach](#modeling-approach)
+  - [Running the Models](#running-the-models)
+  - [Codebase Structure](#codebase-structure)
 - [Results & Evaluation](#results--evaluation)
+- [Improvements](#improvements)
 
----
+## Overview
+This project evaluates bias in job screening models using logistic regression and XGBoost on a dataset of 500 applicant records. The dataset includes features such as Age, Gender (0: Female, 1: Male), EducationLevel (1-4), ExperienceYears, PreviousCompanies, DistanceFromCompany, InterviewScore, SkillsScore, PersonalityScore, RecruitmentStrategy (1-3), and HiringDecision (0: No-Hire, 1: Hire). Gender is the sensitive attribute, and the dataset is imbalanced (80% male, 40% female resumes).
 
-## Project Overview
+## Installation
 
-This project investigates bias in hiring decisions using Logistic Regression and XGBoost models. It includes data preprocessing, fairness metric evaluation (e.g., Demographic Parity, Equal Opportunity), and explainability analysis using SHAP to interpret model predictions.
+1. **Clone the Repository**
+   ```bash
+   git clone https://github.com/yourusername/model-bias-analysis.git
+   cd model-bias-analysis
+   ```
 
+2. **Set Up Environment**
+   - Install Python 3.8+.
+   - Create a virtual environment:
+     ```bash
+     python -m venv venv
+     source venv/bin/activate  # On Windows: venv\Scripts\activate
+     ```
+   - Install dependencies:
+     ```bash
+     pip install scikit-learn xgboost pandas numpy
+     ```
 
-2. **Notebook Workflow:**
-   - **Data Preprocessing:** Scales features using StandardScaler.
-   - **Bias Analysis:** Evaluates fairness metrics (Demographic Parity, Equal Opportunity, False Positive Rate, Average Odds Difference).
-   - **Model Training:** Trains Logistic Regression (from scratch) and loads pretrained XGBoost model.
-   - **Explainability:** Uses SHAP to explain predictions for selected Hire/No-Hire cases.
-   - **Evaluation:** Compares model performance and bias metrics.
+3. **Data Preparation**
+   - Place the dataset (e.g., `hiring_data.csv`) in the `data/` directory.
+   - Ensure features are preprocessed (scaled using `StandardScaler`).
 
----
+## Usage
 
-## Modeling Approach
+### Running the Models
+1. **Logistic Regression**
+   - Execute the script to train and evaluate:
+     ```bash
+     python scripts/logistic_regression.py
+     ```
+   - Output: Accuracy (0.86), Precision (0.83), Recall (0.71), Fairness metrics (Demographic Parity: Male 0.304, Female 0.269; Equal Opportunity: Male 0.761, Female 0.668; False Positive Rate: Male 0.098, Female 0.062; AOD: 0.05).
 
-- **Feature Engineering:** Uses raw features, scaled with StandardScaler.
-- **Class Imbalance Handling:** Accounts for imbalanced dataset (90% male) during training.
-- **Models Used:**
-  - Logistic Regression (`LogisticRegression`)
-  - XGBoost (`XGBClassifier`, pretrained)
-- **Fairness Metrics:** Demographic Parity, Equal Opportunity, False Positive Rate, Average Odds Difference.
-- **Explainability:** SHAP values to interpret feature contributions for predictions.
+2. **XGBoost**
+   - Load the pretrained model and evaluate:
+     ```bash
+     python scripts/xgboost.py
+     ```
+   - Output: Accuracy (0.92), Precision (0.91), Recall (0.83), Fairness metrics (Demographic Parity: Male 0.318, Female 0.287; Equal Opportunity: Male 0.570, Female 0.519; False Positive Rate: Male 0.000, Female 0.029; AOD: 0.05).
 
----
-
-## Results & Evaluation
+### Codebase Structure
+- `data/`: Contains the dataset (e.g., `hiring_data.csv`).
+- `scripts/`: 
+  - `logistic_regression.py`: Implements and trains logistic regression.
+  - `xgboost.py`: Loads pretrained XGBoost model (`xgboost_model.json`) and evaluates.
+- `notebooks/`: Jupyter notebooks for exploratory analysis (if applicable).
 
 - **Model Performance:** Both models show comparable bias (Average Odds Difference: 0.00). XGBoost has slightly higher disparities in Equal Opportunity (Male: 0.770, Female: 0.99) and Demographic Parity (Male: 0.318, Female: 0.287).
 - **Explainability Results:**
@@ -53,6 +72,13 @@ This project investigates bias in hiring decisions using Logistic Regression and
     ![Fairness Metrics Plot](file:///C:/Users/dell/OneDrive/Documents/AI%20Bias%20Detection/results/logistic_fairness_plot.png)
   - **SHAP Explainability Plot:** Shows SHAP values for feature contributions in Hire/No-Hire predictions.
     ![SHAP Explainability Plot](images/shap_explainability_plot.png)
+
+## Improvements
+- Rebalance the dataset (e.g., oversample female resumes) to reduce bias.
+- Apply fairness constraints during training.
+- Analyze feature importance in XGBoost to identify bias sources.
+
+
 
 ---
 
