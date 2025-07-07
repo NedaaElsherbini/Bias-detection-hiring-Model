@@ -62,6 +62,8 @@ This project evaluates bias in job screening models using logistic regression an
   - `logistic_regression.py`: Implements and trains logistic regression.
   - `xgboost.py`: Loads pretrained XGBoost model (`xgboost_model.json`) and evaluates.
 - `notebooks/`: Jupyter notebooks for exploratory analysis (if applicable).
+  
+## Results & Evaluation
 
 - **Model Performance:** Both models show comparable bias (Average Odds Difference: 0.00). XGBoost has slightly higher disparities in Equal Opportunity (Male: 0.770, Female: 0.99) and Demographic Parity (Male: 0.318, Female: 0.287).
 - **Explainability Results:**
